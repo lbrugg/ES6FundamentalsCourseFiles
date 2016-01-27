@@ -1,7 +1,7 @@
 JavaScript Fundamentals for ES6 course files
 ==========================
 
-This course is currently up to date
+This is a fork of the ES6 Primer course from Pluralsight.
 
 ### Commands to start
 ```
