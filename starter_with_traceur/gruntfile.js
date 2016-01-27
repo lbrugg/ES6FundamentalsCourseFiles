@@ -13,16 +13,16 @@ module.exports = function (grunt) {
         },
          traceur: {
             options: {
-                experimental: true
+                includeRuntime: true,
+                traceurCommand: "node_modules/traceur/src/node/command.js",
+                traceurRuntime: "node_modules/traceur/bin/traceur-runtime.js",
+                traceurOptions: "--experimental"
             },
-            custom: {
-                files: [{
-                    expand: true, 
-                    src: ["app/es6/*.js"],
-                    dest: "app/es5/",
-                    ext: ".js", 
-                    flatten: true
-                }]
+            "app": {
+                files: {
+                    "app/es5/mySpec.js" : [ "app/es6/*.js" ]
+                }
+                
             }
         },
         watch: {
@@ -47,6 +47,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-express");
     grunt.loadNpmTasks("grunt-open");
-    grunt.loadNpmTasks("grunt-traceur");
+    grunt.loadNpmTasks("grunt-traceur-simple");
+    //grunt.loadNpmTasks("grunt-traceur");
     grunt.registerTask("default", ["traceur", "express", "open", "watch"]);
 };
